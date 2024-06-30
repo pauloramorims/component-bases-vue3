@@ -1,0 +1,78 @@
+$palettes: (
+  primary: (
+    ultra-dark: #262626,
+    low-dark: #323232,
+    low-medium: #BD8F00,
+    low-light: #E1B300,
+    pure: #FFD23A,
+    high-medium: #FFDD6B,
+    high-light: #FFE99C,
+    ultra-light: #FFF5CD,
+    default: #FFD23A,
+  ),
+  support: (
+    green-10: #00645D,
+    white-10: #FDFDFD,
+  ),
+  neutral: (
+    ultra-dark: #1A1C18,
+    low-dark: #454E5F,
+    low-medium: #5D5F5A,
+    low-light: #79747E,
+    high-dark: #ABACA6,
+    pure: #ABACA6,
+    high-medium: #DEE0E0,
+    high-light: #F1F1EB,
+    ultra-light: #FCFDF6,
+    default: #ABACA6,
+    white-10: #f3f3f3
+  ),
+  error: (
+    low-dark: #410002,
+    low-medium: #89161A,
+    low-light: #DF262D,
+    pure: #FF544B,
+    high-dark: #FFB4AC,
+    high-medium: #FFE5E2,
+    default: #FF544B,
+  ),
+  information: (
+    low-dark: #0D1F42,
+    low-medium: #0E4496,
+    low-light: #214BE0,
+    pure: #0B55BB,
+    high-dark:#276AAE ,
+    high-medium:#4E8EEE ,
+    ultra-light: #DDE8FF,
+    default: #0B55BB,
+  ),
+  alert: (
+    low-dark: #251A00,
+    low-medium: #765A00,
+    low-light: #F0AD00,
+    pure: #F9CC38,
+    high-dark: #FFDF96,
+    high-medium: #FFF0D3,
+    default: #F9CC38,
+  ),
+  fonte: (
+    primary: #287027,
+    text-dark: #454743,
+    text-medium: #5D5F5A,
+    text-light: #767872,
+    default: #454743,
+  )
+);
+
+@function get-color($color, $accent: 'default') {
+  @return map-get(map-get($palettes, $color), $accent);
+}
+
+:root {
+  @each $colorname, $palette in $palettes {
+    @each $key, $value in $palette {
+      $keyname: '--palette-' + $colorname + '-' + $key;
+      #{$keyname}: #{$value};
+    }
+  }
+}
